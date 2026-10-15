@@ -1,0 +1,5 @@
+interface:
+  display_name: "Grill To QA"
+  short_description: "Grill through a QA file you answer in"
+policy:
+  allow_implicit_invocation: false
