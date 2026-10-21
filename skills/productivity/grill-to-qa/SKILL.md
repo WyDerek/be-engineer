@@ -20,12 +20,13 @@ Write to `qa/<YYYY-MM-DD>-<slug>.md` at the project root. Slug from the topic. C
 
 ## Questions for You
 
-### Q1 — <question title>
+### Q1: <question title>
 
 **Refs:** [spec § Failure handling](../.scratch/mail/spec.md#failure-handling)
 
 - **A (recommended):** ...
 - **B:** ...
+- **C:** ...
 
 **Your answer:**
 ````
@@ -34,11 +35,19 @@ Write to `qa/<YYYY-MM-DD>-<slug>.md` at the project root. Slug from the topic. C
 - `Refs` is optional: links to what the user may need to read before answering.
 - Exactly one option is recommended. An open question with no options is fine: put your recommended answer in the body.
 - Ids keep counting across rounds (Q1, Q2, ...).
+- The user answers with a letter, or with their own text when no option fits.
 
 ## The loop
 
 1. Write the round to the file with `**Status:** open`. In the chat, say only the path and how many questions are waiting. Do not repeat the questions there.
-2. Stop and wait. The user answers in the file, then tells you they are done.
+2. Stop and wait. The user answers in the file, then tells you they are done ("done", "answered", "ready"). Any other reply is not the signal: answer it and keep waiting.
 3. Re-read the whole file, set `**Status:** answered`, and recompute the frontier from the answers.
 4. If more questions remain, add the next round and set `**Status:** open` again.
-5. When the user confirms the shared understanding, set `**Status:** closed`.
+5. When the user confirms the shared understanding, set `**Status:** closed` and add a `## Decisions` summary at the end of the file, one line per question:
+
+```markdown
+## Decisions
+
+- Q1 → A: <one line>
+- Q2 → own answer: <one line>
+```

@@ -26,15 +26,16 @@ In a typical [grilling](https://aihero.dev/skills-grilling) [session](https://ww
 
 1. The agent writes the round into `qa/<YYYY-MM-DD>-<slug>.md` with `**Status:** open`.
 2. In the chat, it prints only the file path and the number of questions waiting.
-3. You open the file in your editor, write your answers beneath each question, and reply in chat when you are finished.
+3. You open the file in your editor and answer each question with an option letter, or your own text when no option fits. Then reply in chat when you are finished.
 4. The agent re-reads the file, marks the status answered, and calculates the next frontier.
+5. When you confirm the shared understanding, the agent marks the file closed and adds a `## Decisions` summary at the end, one line per question.
 
 The history of questions, options, recommendations, and your answers stays documented in the repository rather than lost in conversation history.
 
 ## Common questions
 
 **How do I signal I have answered?**
-Tell the agent in the chat when you are done. A short message like "done", "answered", or "ready" is enough. The agent reads the QA file, marks the round answered, and presents the next round or closes the session if no questions remain.
+Tell the agent in the chat when you are done. Say "done", "answered", or "ready". Any other reply is treated as a side question, and the agent keeps waiting. The agent reads the QA file, marks the round answered, and presents the next round or closes the session if no questions remain.
 
 **Why not just use grill-me?**
 Use [grill-me](https://aihero.dev/skills-grill-me) when you want a fast, interactive session directly in the chat and do not need a file left behind. Reach for `grill-to-qa` when you want to take your time answering, edit your thoughts in a text editor, or keep a committed record of why decisions were made.
@@ -46,6 +47,7 @@ Use [grill-me](https://aihero.dev/skills-grill-me) when you want a fast, interac
 - The agent halts after writing each round and waits for your cue instead of prompting you again.
 - When you notify the agent you are done, it reads your answers from the file and sets the status to answered.
 - Follow-up rounds append to the same file with continuing question IDs (Q1, Q2, and onward).
+- When the session closes, the file ends with a `## Decisions` list giving one line per question.
 
 ## Where it fits
 
